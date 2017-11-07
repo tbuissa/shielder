@@ -116,7 +116,7 @@ def fn_block_sigs(original_policy,interface_id,triggeredAttacks,shielderAction):
                 log = 'Time: %s, User: %s, Blocking Change number: %s, Attack %s, changed from blockingOption: %s and isBlockingOptionCustomized: %s and isAttackCustomized: %s to blockingOption: %s and isBlockingOptionCustomized: %s and isAttackCustomized: %s' % (date, user, blockedAttacksCount, attack['attackName'], oldBlockingOption, oldIsBlockingOptionCustomized, oldIsAttackCustomized, attack['AttackResponse']['blockingOption'], attack['AttackResponse']['isBlockingOptionCustomized'], attack['isAttackCustomized'])
                 attacksChangeLog.write(log+'\n')
                 print(log)
-            if "quarantine" in shielderAction and attack['AttackResponse']['blockingOption'] == 'ENABLE':
+            if "quarantine" in shielderAction and attack['AttackResponse']['blockingOption'] == 'ENABLE' and attack['AttackResponse']['isQuarantineCustomized'] != True:
                 quarantinedAttacksCount += 1
                 oldIsAttackCustomized = attack['isAttackCustomized']
                 attack['AttackResponse']['TimeStamp'] = date.strftime("%Y-%m-%d %H:%M:%S.000")
